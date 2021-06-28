@@ -20,6 +20,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role_id',
     ];
 
     /**
@@ -40,4 +41,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    /**
+     * Returns the user's first name
+     *
+     * @return String
+     */
+    public function firstName()
+    {
+        return explode(" ", $this->name)[0];
+    }
+
+    /**
+     * Returns the user's last names
+     *
+     * @return String
+     */
+    public function lastNames()
+    {
+        return explode(" ", $this->name, 2)[1];
+    }
+
+    /**
+     * Returns the user's role.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     */
+    public function role()
+    {
+        return $this->hasOne(UserRole::class, 'id', 'role_id');
+    }
+
+    /**
+     * Returns a conditional based on whether the user is an administrator or not.
+     *
+     * @return bool
+     */
+    public function isAdmin()
+    {
+         return ($this->role->role === 'admin');
+    }
 }

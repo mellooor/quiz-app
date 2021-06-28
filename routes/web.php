@@ -14,5 +14,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/home');
+});
+
+Route::get('/home', function() {
+   return view('home');
+})->name("home");
+
+Route::middleware("auth")->group(function() {
+    Route::delete('/user', 'App\Http\Controllers\UserController@destroy')->name('delete-profile');
+    Route::get('/update-profile-information', 'App\Http\Controllers\UserController@edit')->name('update-profile');
 });
