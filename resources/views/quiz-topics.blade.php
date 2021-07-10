@@ -21,19 +21,27 @@
             @endif
 
             <div id="quiz-topics-container" class="flex flex-col w-full h-2/3 overflow-y-scroll border border-black">
-                <div class="flex w-full justify-around items-center border-b py-2">
-                    <div class="w-2/5">Topic 1</div>
-                    <div>
-                        <form action="/" method="post">
-                            <button type="submit" class="border p-3 mb-2 lg:mb-6 xl:mb-0 block rounded bg-yellow-500 hover:bg-yellow-700 text-yellow-50 lg:text-2xl shadow-md text-center">Edit</button>
-                        </form>
+                @if ($topics->isNotEmpty())
+                    @foreach ($topics as $topic)
+                        <div class="flex w-full justify-around items-center border-b py-2">
+                            <div class="w-2/5">{{ $topic->topic }}</div>
+                            <div>
+                                <form action="/" method="post">
+                                    <button type="submit" class="border p-3 mb-2 lg:mb-6 xl:mb-0 block rounded bg-yellow-500 hover:bg-yellow-700 text-yellow-50 lg:text-2xl shadow-md text-center">Edit</button>
+                                </form>
+                            </div>
+                            <div>
+                                <form action="/" method="post">
+                                    <button type="submit" class="border p-3 mb-2 lg:mb-6 xl:mb-0 block rounded bg-red-500 hover:bg-red-700 text-red-50 lg:text-2xl shadow-md text-center">Delete</button>
+                                </form>
+                            </div>
+                        </div>
+                    @endforeach
+                @else
+                    <div class="flex w-full justify-around items-center border-b py-2">
+                        <div class="w-full text-center">No topics to display</div>
                     </div>
-                    <div>
-                        <form action="/" method="post">
-                            <button type="submit" class="border p-3 mb-2 lg:mb-6 xl:mb-0 block rounded bg-red-500 hover:bg-red-700 text-red-50 lg:text-2xl shadow-md text-center">Delete</button>
-                        </form>
-                    </div>
-                </div>
+                @endif
             </div>
             <form action="{{ route('create-quiz-topic') }}" method="post" class="flex justify-center mt-4" x-data="{ addQuizTopicModalOpen: false }">
                 @csrf

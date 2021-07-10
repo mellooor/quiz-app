@@ -14,7 +14,9 @@ class QuizTopicController extends Controller
      */
     public function index()
     {
-        return view('quiz-topics');
+        $topics = QuizTopic::all();
+
+        return view('quiz-topics')->with('topics', $topics);
     }
 
     /**
