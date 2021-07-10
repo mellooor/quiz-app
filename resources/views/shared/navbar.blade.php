@@ -28,6 +28,12 @@
                 <a href="#" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white">Create a Quiz</a>
             </div>
 
+            @if (\Illuminate\Support\Facades\Auth::user()->isAdmin())
+                    <div id="quiz-topics-item-container" class="mb-2 lg:mr-5">
+                        <a href="{{ route('quiz-topics') }}" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white">Quiz Topics</a>
+                    </div>
+            @endif
+
             <div id="my-account-menu-item-container" class="mb-2 lg:mr-5">
                 <a href="{{ route('update-profile') }}" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white">My Account</a>
             </div>

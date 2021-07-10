@@ -19,9 +19,16 @@ Route::get('/', function () {
 
 Route::get('/home', function() {
    return view('home');
-})->name("home");
+})->name('home');
 
-Route::middleware("auth")->group(function() {
+Route::middleware('auth')->group(function()
+{
     Route::delete('/user', 'App\Http\Controllers\UserController@destroy')->name('delete-profile');
     Route::get('/update-profile-information', 'App\Http\Controllers\UserController@edit')->name('update-profile');
+});
+
+Route::middleware(['auth', 'admin'])->group(function()
+{
+    Route::get('/quiz-topics', 'App\Http\Controllers\QuizTopicController@index')->name('quiz-topics');
+    Route::post('/quiz-topics', 'App\Http\Controllers\QuizTopicController@store')->name('create-quiz-topic');
 });

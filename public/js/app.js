@@ -1847,14 +1847,34 @@ var bodyScrollLock = __webpack_require__(/*! body-scroll-lock */ "./node_modules
 
 var disableBodyScroll = bodyScrollLock.disableBodyScroll;
 var enableBodyScroll = bodyScrollLock.enableBodyScroll;
-var targetElement = document.querySelector('#delete-user-modal-container');
-document.getElementById('delete-user-btn').addEventListener('click', function () {
-  window.scrollTo(0, 0);
-  disableBodyScroll(targetElement);
-});
-document.getElementById('delete-user-btn-cancel').addEventListener('click', function () {
-  enableBodyScroll(targetElement);
-});
+var targetScrollLockElementOne = document.querySelector('#delete-user-modal-container');
+var targetScrollLockElementTwo = document.querySelector('#add-quiz-topic-modal-container');
+
+if (document.getElementById('delete-user-btn')) {
+  document.getElementById('delete-user-btn').addEventListener('click', function () {
+    window.scrollTo(0, 0);
+    disableBodyScroll(targetScrollLockElementOne);
+  });
+}
+
+if (document.getElementById('delete-user-btn-cancel')) {
+  document.getElementById('delete-user-btn-cancel').addEventListener('click', function () {
+    enableBodyScroll(targetScrollLockElementOne);
+  });
+}
+
+if (document.getElementById('add-quiz-topic-btn')) {
+  document.getElementById('add-quiz-topic-btn').addEventListener('click', function () {
+    window.scrollTo(0, 0);
+    disableBodyScroll(targetScrollLockElementTwo);
+  });
+}
+
+if (document.getElementById('add-quiz-topic-btn-cancel')) {
+  document.getElementById('add-quiz-topic-btn-cancel').addEventListener('click', function () {
+    enableBodyScroll(targetScrollLockElementTwo);
+  });
+}
 
 /***/ }),
 
