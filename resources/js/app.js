@@ -7,6 +7,7 @@ const enableBodyScroll = bodyScrollLock.enableBodyScroll;
 
 const targetScrollLockElementOne = document.querySelector('#delete-user-modal-container');
 const targetScrollLockElementTwo = document.querySelector('#add-quiz-topic-modal-container');
+const targetScrollLockElementThree = document.querySelector('#edit-quiz-topic-modal-container');
 
 
 if (document.getElementById('delete-user-btn'))
@@ -36,5 +37,20 @@ if (document.getElementById('add-quiz-topic-btn-cancel'))
 {
     document.getElementById('add-quiz-topic-btn-cancel').addEventListener('click', function() {
         enableBodyScroll(targetScrollLockElementTwo);
+    });
+}
+
+if (document.getElementById('edit-quiz-topic-btn'))
+{
+    document.getElementById('edit-quiz-topic-btn').addEventListener('click', function() {
+        window.scrollTo(0, 0);
+        disableBodyScroll(targetScrollLockElementThree);
+    });
+}
+
+if (document.getElementById('edit-quiz-topic-btn-cancel'))
+{
+    document.getElementById('edit-quiz-topic-btn-cancel').addEventListener('click', function() {
+        enableBodyScroll(targetScrollLockElementThree);
     });
 }

@@ -40,12 +40,23 @@ class QuizTopicController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\QuizTopic  $quizTopic
-     * @return \Illuminate\Http\Response
+     * @param  string  $quizTopicID
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, QuizTopic $quizTopic)
+    public function update(Request $request, string $quizTopicID)
     {
-        //
+        $request->validate([
+            'topic' => 'required|string|unique:quiz_topics|max:255',
+        ]);
+
+        // Verify that the referenced quiz topic exists in the DB.
+        $quizTopic = QuizTopic::findOrFail($quizTopicID);
+
+        $quizTopic->topic = $request->input('topic');
+
+        $quizTopic->save();
+
+        return back()->with('status', 'Quiz topic has been updated.');
     }
 
     /**
