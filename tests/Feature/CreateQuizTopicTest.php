@@ -47,7 +47,7 @@ class CreateQuizTopicTest extends TestCase
      *
      * The URI for the create a quiz topic page.
      */
-    protected $uri = "/quiz-topics";
+    protected $uri = "/quiz-topic";
 
     public function setUp(): void
     {

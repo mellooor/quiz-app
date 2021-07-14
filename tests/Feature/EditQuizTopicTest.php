@@ -46,7 +46,7 @@ class EditQuizTopicTest extends TestCase
      *
      * The URI for the quiz topics page.
      */
-    protected $uri = "/quiz-topics";
+    protected $uri = "/quiz-topic";
 
     /** @var String
      *
