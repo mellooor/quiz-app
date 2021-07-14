@@ -62,11 +62,16 @@ class QuizTopicController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\QuizTopic  $quizTopic
-     * @return \Illuminate\Http\Response
+     * @param  int  $quizTopicID
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(QuizTopic $quizTopic)
+    public function destroy(int $quizTopicID)
     {
-        //
+        // Verify that the referenced quiz topic exists in the DB.
+        $quizTopic = QuizTopic::findOrFail($quizTopicID);
+
+        $quizTopic->delete();
+
+        return back()->with('status', 'Quiz topic has been deleted.');
     }
 }
