@@ -81,4 +81,14 @@ class User extends Authenticatable
     {
          return ($this->role->role === 'admin');
     }
+
+    /**
+     * Retrieve the user's quizzes.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz', 'author_id');
+    }
 }

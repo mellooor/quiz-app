@@ -17,4 +17,14 @@ class QuizTopic extends Model
     protected $fillable = ['topic'];
 
     public $timestamps = false;
+
+    /**
+     * Retrieve the quizzes that are tagged with this topic.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\HasMany
+     */
+    public function quizzes()
+    {
+        return $this->hasMany('App\Models\Quiz', 'topic_id');
+    }
 }

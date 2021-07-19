@@ -33,4 +33,7 @@ Route::middleware(['auth', 'admin'])->group(function()
     Route::post('/quiz-topic', 'App\Http\Controllers\QuizTopicController@store')->name('create-quiz-topic');
     Route::put('/quiz-topic/{id}', 'App\Http\Controllers\QuizTopicController@update')->name('update-quiz-topic');
     Route::delete('/quiz-topic/{id}', 'App\Http\Controllers\QuizTopicController@destroy')->name('delete-quiz-topic');
+    Route::get('/new-quiz', 'App\Http\Controllers\QuizController@create')->name('new-quiz');
+    Route::post('/new-quiz', 'App\Http\Controllers\QuizController@store')->name('create-new-quiz');
+    Route::get('{id}/questions', 'App\Http\Controllers\QuizQuestionController@create')->name('create-quiz-questions');
 });

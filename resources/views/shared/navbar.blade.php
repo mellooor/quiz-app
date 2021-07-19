@@ -25,7 +25,7 @@
 
         @auth
             <div id="create-quiz-menu-item-container" class="mb-2 lg:mr-5">
-                <a href="#" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white">Create a Quiz</a>
+                <a href="{{ route('new-quiz') }}" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white">Create a Quiz</a>
             </div>
 
             @if (\Illuminate\Support\Facades\Auth::user()->isAdmin())
