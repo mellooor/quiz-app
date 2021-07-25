@@ -4,19 +4,70 @@ namespace App\Http\Controllers;
 
 use App\Models\Quiz;
 use App\Models\QuizTopic;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class QuizController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display all quizzes.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function index()
     {
-        //
+        $quizzes = Quiz::paginate(5);
+        $title = 'All Quizzes';
+
+        return view('show-all-quizzes')->with('data', [
+            'quizzes' => $quizzes,
+            'title' => $title,
+        ]);
+    }
+
+    /**
+     * Display all quizzes by topic.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function indexByTopic(int $topicID)
+    {
+        if ($topic = QuizTopic::find($topicID))
+        {
+            $quizzes = Quiz::where('topic_id', $topicID)->paginate(5);
+            $title = $topic->topic . ' Quizzes';
+
+            return view('show-quizzes-by-topic')->with('data', [
+                'quizzes' => $quizzes,
+                'topic' => $topic->topic,
+                'title' => $title,
+            ]);
+        } else {
+            abort(404);
+        }
+    }
+
+    /**
+     * Display all quizzes by author.
+     *
+     * @return \Illuminate\Contracts\View\View
+     */
+    public function indexByUser(int $userID)
+    {
+        if ($user = User::find($userID))
+        {
+            $quizzes = Quiz::where('author_id', $userID)->paginate(5);
+            $title = $user->name . '\'s Quizzes';
+
+            return view('show-quizzes-by-author')->with('data', [
+                'quizzes' => $quizzes,
+                'author' => $user,
+                'title' => $title
+            ]);
+        } else {
+            abort(404);
+        }
     }
 
     /**
@@ -56,14 +107,21 @@ class QuizController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display an individual quiz.
      *
      * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\View
      */
     public function show(Quiz $quiz)
     {
-        //
+        // Return the quiz page if the specified quiz exists in the DB, otherwise return a 404.
+        if ($quiz->exists())
+        {
+            return view('show-quiz')->with('quiz', $quiz->first());
+        } else
+        {
+            abort(404);
+        }
     }
 
     /**

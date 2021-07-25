@@ -11,8 +11,8 @@
         <div id="quizzes-menu-item-container" class="mb-2 lg:mr-5 w-full lg:w-auto lg:flex lg:relative" x-data="{ quizzesNavOpen: false }">
             <a href="#" class="block hover:bg-blue-50 lg:hover:bg-blue-100 text-lg border-black w-full p-2 lg:hover:text-white" :class="{ 'bg-blue-300': quizzesNavOpen, 'hover:bg-blue-300' : quizzesNavOpen }" @click.prevent="quizzesNavOpen = true">Quizzes:</a>
             <div id="quizzes-sub-menu-items-container" class="lg:absolute lg:top-full lg:flex lg:flex-col">
-                <a href="#" class="block bg-blue-50 hover:bg-white text-lg border-black w-full py-2 px-5" x-show="quizzesNavOpen" @click.away="quizzesNavOpen = false">All Quizzes</a>
-                <a href="#" class="block bg-blue-50 hover:bg-white text-lg border-black w-full py-2 px-5" x-show="quizzesNavOpen" @click.away="quizzesNavOpen = false">My Quizzes</a>
+                <a href="{{ route('all-quizzes') }}" class="block bg-blue-50 hover:bg-white text-lg border-black w-full py-2 px-5" x-show="quizzesNavOpen" @click.away="quizzesNavOpen = false">All Quizzes</a>
+                <a href="{{ route('quizzes-by-user', Auth::user()->id) }}" class="block bg-blue-50 hover:bg-white text-lg border-black w-full py-2 px-5" x-show="quizzesNavOpen" @click.away="quizzesNavOpen = false">My Quizzes</a>
             </div>
         </div>
         @endauth

@@ -34,6 +34,6 @@ class Quiz extends Model
      */
     public function topic()
     {
-        return $this->hasOne('App\Models\QuizTopic', 'id');
+        return $this->belongsTo('App\Models\QuizTopic', 'topic_id');
     }
 }

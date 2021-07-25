@@ -21,12 +21,23 @@ Route::get('/home', function() {
    return view('home');
 })->name('home');
 
+Route::get('/quizzes', 'App\Http\Controllers\QuizController@index')->name('all-quizzes');
+Route::get('/topic/{topicID}/quizzes', 'App\Http\Controllers\QuizController@indexByTopic')->name('quizzes-by-topic');
+Route::get('/user/{userID}/quizzes', 'App\Http\Controllers\QuizController@indexByUser')->name('quizzes-by-user');
+Route::get('/quiz/{quizID}', 'App\Http\Controllers\QuizController@show')->name('quiz');
+
+/*
+ * All routes that require a user to be logged in.
+ */
 Route::middleware('auth')->group(function()
 {
     Route::delete('/user', 'App\Http\Controllers\UserController@destroy')->name('delete-profile');
     Route::get('/update-profile-information', 'App\Http\Controllers\UserController@edit')->name('update-profile');
 });
 
+/*
+ * All routes that require an administrator to be logged in.
+ */
 Route::middleware(['auth', 'admin'])->group(function()
 {
     Route::get('/quiz-topics', 'App\Http\Controllers\QuizTopicController@index')->name('quiz-topics');
