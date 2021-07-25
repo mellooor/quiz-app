@@ -3,5 +3,7 @@
 @section('title', 'Home')
 
 @section('content')
-    <h1>Home Page</h1>
+    <div class="h-screen w-full bg-gradient-to-r from-black to-indigo-300 via-indigo-800">
+        <h1 class="text-white">Home Page</h1>
+    </div>
 @endsection

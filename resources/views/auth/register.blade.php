@@ -3,7 +3,7 @@
 @section('title', 'Register')
 
 @section('content')
-    <div id="register-panel-container" class="bg-gray-200 min-w-screen flex-1 border-2 flex justify-center items-center">
+    <div id="register-panel-container" class="bg-gradient-to-r from-black to-indigo-300 via-indigo-800 min-w-screen flex-1 flex justify-center items-center">
         <div id="register-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 flex flex-col shadow-xl rounded">
             <h1 class="mb-5 text-2xl lg:text-3xl text-center">Register</h1>
 

@@ -3,7 +3,7 @@
 @section('title', 'Quiz Topics')
 
 @section('content')
-    <div id="quiz-topics-panel-container" class="bg-gray-200 min-w-screen h-screen border-2 flex justify-center items-center">
+    <div id="quiz-topics-panel-container" class="bg-gradient-to-r from-black to-indigo-300 via-indigo-800 min-w-screen h-screen flex justify-center items-center">
         <div id="quiz-topics-panel" class="bg-gradient-to-br from-gray-100 to-white bg-opacity-70 shadow-xl rounded box-content py-5 lg:py-7 px-10 w-2/3 h-2/3">
             <h1 class="mb-5 text-2xl lg:text-4xl text-center">Quiz Topics</h1>
 
