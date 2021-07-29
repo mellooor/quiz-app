@@ -5,7 +5,7 @@
     <div id="nav-dropdown-btn" class="w-1/2 order-1 pl-5 lg:hidden">
         <svg class="fill-current h-7 w-7 cursor-pointer" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg" @click="mainNavOpen = !mainNavOpen"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
     </div>
-    <div id="nav-menu-items" :class="{ 'block' : mainNavOpen === true, 'hidden' : mainNavOpen === false }" class="w-full bg-indigo-200 flex-1 order-3 lg:mt-0 lg:flex items-center justify-center border-b-2 absolute lg:relative border-gray-300 lg:border-0 top-full" @click.away="mainNavOpen = false">
+    <div id="nav-menu-items" :class="{ 'block' : mainNavOpen === true, 'hidden' : mainNavOpen === false }" class="w-full bg-indigo-200 lg:bg-opacity-0 flex-1 order-3 lg:mt-0 lg:flex items-center justify-center border-b-2 absolute lg:relative border-gray-300 lg:border-0 top-full lg:top-0" @click.away="mainNavOpen = false">
 
         @auth
         <div id="quizzes-menu-item-container" class="mb-2 lg:mr-5 w-full lg:w-auto lg:flex lg:relative" x-data="{ quizzesNavOpen: false }">

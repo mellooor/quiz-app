@@ -3,7 +3,7 @@
 @section('title', 'Create Quiz Questions')
 
 @section('content')
-    <div id="quiz-questions-panel-container" class="bg-gradient-to-r from-black to-indigo-300 via-indigo-800 min-w-screen min-h-screen h-screen flex justify-center items-center">
+    <div id="quiz-questions-panel-container" class="flex-1 bg-gradient-to-r from-black to-indigo-300 via-indigo-800 py-5 min-w-screen flex justify-center items-center">
         <div id="quiz-questions-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 flex flex-col shadow-xl rounded h-3/4 overflow-y-scroll">
             <a href="/" id="quiz-questions-back-btn" class="border w-1/2 sm:w-1/5 xl:w-1/3 mb-4 p-2 lg:py-6 xl:py-4 block rounded bg-gray-500 hover:bg-gray-700 text-gray-50 shadow-md text-center">Back to Quiz</a>
             <h1 class="mb-5 text-2xl lg:text-4xl mx-auto">Quiz Questions</h1>

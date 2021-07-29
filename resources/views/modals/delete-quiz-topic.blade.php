@@ -1,4 +1,4 @@
-<div id="delete-quiz-topic-modal-background" class="absolute top-0 left-0 min-h-full flex flex-col justify-center items-center w-full bg-black bg-opacity-70" x-show="deleteQuizTopicModalOpen">
+<div id="delete-quiz-topic-modal-background" class="absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center w-full bg-black bg-opacity-70" x-show="deleteQuizTopicModalOpen">
     <div id="delete-quiz-topic-modal-container" class="w-2/3 bg-white p-5" x-show="deleteQuizTopicModalOpen">
         <h1 class="mb-5 text-2xl lg:text-4xl text-center">Delete Quiz Topic</h1>
         <h3 class="mb-5 text-lg lg:text-2xl text-center">Are you sure you want to delete the topic - "{{ $topic->topic }}"?</h3>

@@ -1,7 +1,7 @@
 @extends('app')
 
 @section('content')
-    <div id="question-container" class="min-h-screen min-w-full bg-gradient-to-r from-black to-indigo-300 via-indigo-800 flex flex-col pt-10">
+    <div id="question-container" class="flex-1 min-w-full bg-gradient-to-r from-black to-indigo-300 via-indigo-800 flex flex-col pt-10">
         <h1 class="text-white text-5xl text-center mb-5">{{ $quiz->title }}</h1>
         <div id="score" class="text-white text-4xl mx-auto mb-10">
             <p>Score: 0/10</p>

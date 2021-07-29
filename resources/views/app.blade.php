@@ -15,7 +15,7 @@
         <!-- The "defer" attribute is important to make sure Alpine waits for Livewire to load first. -->
     </head>
 
-    <body class="min-h-screen flex flex-col">
+    <body class="min-h-screen flex flex-col relative">
     @include('shared.navbar')
 
     <!-- Add your site or application content here -->

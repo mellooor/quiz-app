@@ -1854,7 +1854,6 @@ var targetScrollLockElementFour = document.querySelector('#delete-quiz-topic-mod
 
 if (document.getElementById('delete-user-btn')) {
   document.getElementById('delete-user-btn').addEventListener('click', function () {
-    window.scrollTo(0, 0);
     disableBodyScroll(targetScrollLockElementOne);
   });
 }
@@ -1867,7 +1866,6 @@ if (document.getElementById('delete-user-btn-cancel')) {
 
 if (document.getElementById('add-quiz-topic-btn')) {
   document.getElementById('add-quiz-topic-btn').addEventListener('click', function () {
-    window.scrollTo(0, 0);
     disableBodyScroll(targetScrollLockElementTwo);
   });
 }
@@ -1880,7 +1878,6 @@ if (document.getElementById('add-quiz-topic-btn-cancel')) {
 
 if (document.getElementById('edit-quiz-topic-btn')) {
   document.getElementById('edit-quiz-topic-btn').addEventListener('click', function () {
-    window.scrollTo(0, 0);
     disableBodyScroll(targetScrollLockElementThree);
   });
 }
@@ -1893,7 +1890,6 @@ if (document.getElementById('edit-quiz-topic-btn-cancel')) {
 
 if (document.getElementById('delete-quiz-topic-btn')) {
   document.getElementById('delete-quiz-topic-btn').addEventListener('click', function () {
-    window.scrollTo(0, 0);
     disableBodyScroll(targetScrollLockElementFour);
   });
 }

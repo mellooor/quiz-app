@@ -1,4 +1,4 @@
-<div class="min-h-screen w-screen bg-gradient-to-r from-black to-indigo-300 via-indigo-800">
+<div class="flex-1 w-screen bg-gradient-to-r from-black to-indigo-300 via-indigo-800">
     <h1 class="my-5 text-center text-3xl text-white">{{  $data['title'] }}</h1>
     <div class="quiz-items-container w-full h-full flex flex-col justify-center items-center rounded mt-20">
 

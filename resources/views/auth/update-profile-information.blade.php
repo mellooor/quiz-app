@@ -3,7 +3,7 @@
 @section('title', 'Update Profile information')
 
 @section('content')
-    <div id="update-profile-panel-container" class="bg-gradient-to-r from-black to-indigo-300 via-indigo-800 min-w-screen min-h-screen flex justify-center items-center">
+    <div id="update-profile-panel-container" class="flex-1 bg-gradient-to-r from-black to-indigo-300 py-5 via-indigo-800 min-w-screen flex justify-center items-center">
         <div id="update-profile-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 flex flex-col shadow-xl rounded">
             <h1 class="mb-5 text-2xl lg:text-4xl text-center">Update Profile Information</h1>
 

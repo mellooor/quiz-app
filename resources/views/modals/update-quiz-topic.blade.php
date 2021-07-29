@@ -1,4 +1,4 @@
-<div id="edit-quiz-topic-modal-background" class="absolute top-0 left-0 min-h-full flex flex-col justify-center items-center w-full bg-black bg-opacity-70" x-show="editQuizTopicModalOpen">
+<div id="edit-quiz-topic-modal-background" class="absolute top-0 left-0 bottom-0 right-0 flex flex-col justify-center items-center w-full bg-black bg-opacity-70" x-show="editQuizTopicModalOpen">
     <div id="edit-quiz-topic-modal-container" class="w-2/3 bg-white p-5" x-show="editQuizTopicModalOpen">
         <h1 class="mb-5 text-2xl lg:text-4xl text-center">Edit Quiz Topic</h1>
         <div id="topic-container" class="flex flex-col mb-4">
