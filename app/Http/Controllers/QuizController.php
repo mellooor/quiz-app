@@ -51,6 +51,7 @@ class QuizController extends Controller
     /**
      * Display all quizzes by author.
      *
+     * @param  int  $userID
      * @return \Illuminate\Contracts\View\View
      */
     public function indexByUser(int $userID)
@@ -127,24 +128,63 @@ class QuizController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @param  int  $quizID
+     * @return \Illuminate\Contracts\View\View|\Illuminate\Http\RedirectResponse
      */
-    public function edit(Quiz $quiz)
+    public function edit(int $quizID)
     {
-        //
+        // Return the quiz edit page if the specified quiz exists in the DB, otherwise return a 404.
+        if ($quiz = Quiz::find($quizID))
+        {
+            // Verify that the user is the author of the quiz. If not, redirect them back to the home page.
+            if ($quiz->author->id === Auth::user()->id)
+            {
+                // Retrieve all of the quiz topics so that they can be passed to the blade template dropdown.
+                $topics = QuizTopic::all();
+
+                return view('edit-quiz')->with('data', [
+                    'quiz' => $quiz,
+                    'topics' => $topics,
+                ]);
+            } else {
+                return redirect()->route('home');
+            }
+        } else
+        {
+            abort(404);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @param  int  $quizID
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, Quiz $quiz)
+    public function update(Request $request, int $quizID)
     {
-        //
+        // Attempt to update the quiz if the specified quiz exists in the DB, otherwise return back to the edit quiz page with an error.
+        if ($quiz = Quiz::find($quizID)) {
+            $request->validate([
+                'title' => 'required|string|unique:quizzes,title,' . $quiz->id .'|max:255',
+                'topic_id' => 'nullable|integer|exists:quiz_topics,id|max:255',
+            ]);
+
+            // Verify that the user is the author of the quiz. If not, redirect them back to the home page.
+            if ($quiz->author->id === Auth::user()->id) {
+                $quiz->topic_id = $request->input('topic_id');
+                $quiz->title = $request->input('title');
+
+                $quiz->save();
+
+                return redirect()->back()->with('status', 'Quiz updated.');
+            } else {
+                return redirect()->route('home');
+            }
+        } else {
+            return redirect()->back()->withErrors(['no-quiz-found' => 'No quiz was found with the parameters supplied.']);
+        }
     }
 
     /**

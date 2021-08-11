@@ -44,7 +44,7 @@
                 <div class="quiz-container-btns flex flex-col sm:flex-row sm:justify-around mx-4 sm:mx-0 mb-4 text-center">
                     <a href="{{ route('quiz', $quiz->id) }}" class="quiz-container-play-btn p-3 mb-2 sm:mb-0 bg-green-600 hover:bg-green-800 text-gray-50 text-xl rounded">Play</a>
                     @if ($quiz->author_id === Auth::user()->id)
-                        <button class="quiz-container-edit-btn p-3 mb-2 sm:mb-0 bg-yellow-600 hover:bg-yellow-800 text-yellow-50 text-xl rounded" type="button">Edit</button>
+                        <a href="{{ route('edit-quiz', $quiz->id) }}" class="quiz-container-edit-btn p-3 mb-2 sm:mb-0 bg-yellow-600 hover:bg-yellow-800 text-yellow-50 text-xl rounded">Edit</a>
                         <button class="quiz-container-edit-btn p-3 bg-red-600 hover:bg-red-800 text-red-50 text-xl rounded" type="button">Delete</button>
                     @endif
                 </div>

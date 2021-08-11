@@ -24,7 +24,7 @@ class Quiz extends Model
      */
     public function author()
     {
-        return $this->belongsTo('App\Models\User', 'id');
+        return $this->belongsTo('App\Models\User', 'author_id');
     }
 
     /**
