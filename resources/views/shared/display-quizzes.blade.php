@@ -1,6 +1,12 @@
 <div class="flex-1 w-screen bg-gradient-to-r from-black to-indigo-300 via-indigo-800">
     <h1 class="my-5 text-center text-3xl text-white">{{  $data['title'] }}</h1>
+
     <div class="quiz-items-container w-full h-full flex flex-col justify-center items-center rounded mt-20">
+        @if (session()->has('status'))
+            @if (session('status'))
+                <p class="text-green-500 mb-2">{{ session('status') }}</p>
+            @endif
+        @endif
 
         @if ($data['quizzes']->isEmpty())
             <div class="no-quizzes-to-display-container w-2/3 h-1/6 flex flex-col bg-gray-200 shadow-xl mb-5 rounded">
@@ -45,7 +51,6 @@
                     <a href="{{ route('quiz', $quiz->id) }}" class="quiz-container-play-btn p-3 mb-2 sm:mb-0 bg-green-600 hover:bg-green-800 text-gray-50 text-xl rounded">Play</a>
                     @if ($quiz->author_id === Auth::user()->id)
                         <a href="{{ route('edit-quiz', $quiz->id) }}" class="quiz-container-edit-btn p-3 mb-2 sm:mb-0 bg-yellow-600 hover:bg-yellow-800 text-yellow-50 text-xl rounded">Edit</a>
-                        <button class="quiz-container-edit-btn p-3 bg-red-600 hover:bg-red-800 text-red-50 text-xl rounded" type="button">Delete</button>
                     @endif
                 </div>
             </div>

@@ -4,7 +4,7 @@
 
 @section('content')
     <div id="edit-quiz-panel-container" class="bg-gray-200 min-w-screen min-h-screen border-2 flex flex-col justify-center items-center">
-        <div id="edit-quiz-primary-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 mb-10 flex flex-col shadow-xl rounded">
+        <div id="edit-quiz-primary-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 mt-10 mb-10 flex flex-col shadow-xl rounded">
             <h1 class="mb-5 text-2xl lg:text-4xl text-center">Edit Quiz</h1>
 
             @if (session()->has('status'))
@@ -43,8 +43,16 @@
                 <button class="border w-2/3 md:w-1/3 p-4 lg:py-6 xl:py-4 mx-auto block rounded bg-green-500 hover:bg-green-700 text-green-50 lg:text-2xl shadow-md text-center" type="submit">Update</button>
             </form>
         </div>
-        <div id="edit-quiz-secondary-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 flex justify-center shadow-xl rounded">
+        <div id="edit-quiz-secondary-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 mb-10 flex justify-center shadow-xl rounded">
             <a href="{{ route('create-quiz-questions', $data['quiz']->id) }}" class="border w-2/3 md:w-1/3 p-4 lg:py-6 xl:py-4 block rounded bg-yellow-500 hover:bg-yellow-700 text-yellow-50 lg:text-2xl shadow-md text-center">Edit Questions</a>
+        </div>
+        <div id="edit-quiz-tertiary-panel" class="bg-gradient-to-br from-gray-100 to-white w-10/12 xl:w-1/2 bg-opacity-70 py-5 lg:py-7 px-10 shadow-xl rounded">
+            <form action="{{ route('delete-quiz', $data['quiz']->id) }}" method="post" class="w-full flex justify-center" x-data="{ deleteQuizModalOpen: false }">
+                @csrf
+                @method('DELETE')
+                <button id="delete-quiz-btn" class="border w-2/3 md:w-1/3 p-4 lg:py-6 xl:py-4 block rounded bg-red-500 hover:bg-red-700 text-red-50 lg:text-2xl shadow-md text-center" type="button" @click="deleteQuizModalOpen = ! deleteQuizModalOpen">Delete Quiz</button>
+                @include('modals.delete-quiz')
+            </form>
         </div>
     </div>
 @endsection

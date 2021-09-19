@@ -190,11 +190,25 @@ class QuizController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Quiz  $quiz
-     * @return \Illuminate\Http\Response
+     * @param  int  $quizID
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Quiz $quiz)
+    public function destroy(int $quizID)
     {
-        //
+        // Attempt to delete the quiz if it exists in the database, otherwise return to the home page with an error.
+        if ($quiz = Quiz::find($quizID)) {
+            // If the current user is the author of the quiz, delete it and return to the home page with a success message. Otherwise, return to the home page with an error.
+            if ($quiz->author_id === Auth::user()->id)
+            {
+                $quiz->delete();
+
+                return redirect()->route('quizzes-by-user', Auth::user()->id)->with('status', 'Quiz deleted.');
+            } else {
+                return redirect()->route('home')->withErrors(['not-authorised' => 'You are not authorised to delete this quiz.']);
+            }
+        } else
+        {
+            return redirect()->route('home')->withErrors(['no-quiz-found' => 'No quiz was found with the parameters supplied.']);
+        }
     }
 }

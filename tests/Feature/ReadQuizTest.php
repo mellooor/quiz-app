@@ -165,31 +165,29 @@ class ReadQuizTest extends TestCase
     /**
      * @test
      *
-     * Ensure that the owner of a quiz can see the edit and delete action buttons on the all quizzes page.
+     * Ensure that the owner of a quiz can see the edit action button on the all quizzes page.
      *
      * @return void
      */
-    public function editDeleteBtnsAppearOnAllQuizzesPageForQuizOwner()
+    public function editBtnAppearsOnAllQuizzesPageForQuizOwner()
     {
         $response = $this->actingAs($this->admin)->get($this->allQuizzesUri);
 
         $response->assertSee($this->editBtnString); // Check to see if the edit button appears on the response page.
-        $response->assertSee($this->deleteBtnString); // Check to see if the delete button appears on the response page.
     }
 
     /**
      * @test
      *
-     * Ensure that the edit and delete action buttons aren't visible for users that don't own the relevant quiz on the all quizzes page.
+     * Ensure that the edit action button isn't visible for users that don't own the relevant quiz on the all quizzes page.
      *
      * @return void
      */
-    public function editDeleteBtnsDontAppearOnAllQuizzesPageForNonQuizOwner()
+    public function editBtnDoesNotAppearOnAllQuizzesPageForNonQuizOwner()
     {
         $response = $this->actingAs($this->regularUser)->get($this->allQuizzesUri);
 
         $response->assertDontSee($this->editBtnString); // Check to see if the edit button doesn't appear on the response page.
-        $response->assertDontSee($this->deleteBtnString); // Check to see if the delete button doesn't appear on the response page.
     }
 
     /**
@@ -293,31 +291,29 @@ class ReadQuizTest extends TestCase
     /**
      * @test
      *
-     * Ensure that the owner of a quiz can see the edit and delete action buttons on the quizzes by topic page.
+     * Ensure that the owner of a quiz can see the edit action button on the quizzes by topic page.
      *
      * @return void
      */
-    public function editDeleteBtnsAppearOnByTopicPageForQuizOwner()
+    public function editBtnAppearsOnByTopicPageForQuizOwner()
     {
         $response = $this->actingAs($this->admin)->get($this->topicQuizzesUri);
 
         $response->assertSee($this->editBtnString); // Check to see if the edit button appears on the response page.
-        $response->assertSee($this->deleteBtnString); // Check to see if the delete button appears on the response page.
     }
 
     /**
      * @test
      *
-     * Ensure that the edit and delete action buttons aren't visible for users that don't own the relevant quiz on the quizzes by topic page.
+     * Ensure that the edit action button isn't visible for users that don't own the relevant quiz on the quizzes by topic page.
      *
      * @return void
      */
-    public function editDeleteBtnsDontAppearOnByTopicPageForNonQuizOwner()
+    public function editBtnDoesNotAppearOnByTopicPageForNonQuizOwner()
     {
         $response = $this->actingAs($this->regularUser)->get($this->topicQuizzesUri);
 
         $response->assertDontSee($this->editBtnString); // Check to see if the edit button doesn't appear on the response page.
-        $response->assertDontSee($this->deleteBtnString); // Check to see if the delete button doesn't appear on the response page.
     }
 
     /**
@@ -421,26 +417,25 @@ class ReadQuizTest extends TestCase
     /**
      * @test
      *
-     * Ensure that the owner of a quiz can see the edit and delete action buttons on the quizzes by user page.
+     * Ensure that the owner of a quiz can see the edit action button on the quizzes by user page.
      *
      * @return void
      */
-    public function editDeleteBtnsAppearOnByUserPageForQuizOwner()
+    public function editBtnAppearsOnByUserPageForQuizOwner()
     {
         $response = $this->actingAs($this->admin)->get($this->userQuizzesUri);
 
         $response->assertSee($this->editBtnString); // Check to see if the edit button appears on the response page.
-        $response->assertSee($this->deleteBtnString); // Check to see if the delete button appears on the response page.
     }
 
     /**
      * @test
      *
-     * Ensure that the edit and delete action buttons aren't visible for users that don't own the relevant quiz on the quizzes by user page.
+     * Ensure that the edit action button isn't visible for users that don't own the relevant quiz on the quizzes by user page.
      *
      * @return void
      */
-    public function editDeleteBtnsDontAppearOnByUserPageForNonQuizOwner()
+    public function editBtnDoesNotAppearOnByUserPageForNonQuizOwner()
     {
         $response = $this->actingAs($this->regularUser)->get($this->userQuizzesUri);
 

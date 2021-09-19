@@ -49,4 +49,5 @@ Route::middleware(['auth', 'admin'])->group(function()
     Route::get('{id}/questions', 'App\Http\Controllers\QuizQuestionController@create')->name('create-quiz-questions');
     Route::get('/edit-quiz/{id}', 'App\Http\Controllers\QuizController@edit')->name('edit-quiz');
     Route::put('/edit-quiz/{id}', 'App\Http\Controllers\QuizController@update')->name('update-quiz');
+    Route::delete('/delete-quiz/{id}', 'App\Http\Controllers\QuizController@destroy')->name('delete-quiz');
 });

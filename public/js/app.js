@@ -1851,6 +1851,7 @@ var targetScrollLockElementOne = document.querySelector('#delete-user-modal-cont
 var targetScrollLockElementTwo = document.querySelector('#add-quiz-topic-modal-container');
 var targetScrollLockElementThree = document.querySelector('#edit-quiz-topic-modal-container');
 var targetScrollLockElementFour = document.querySelector('#delete-quiz-topic-modal-container');
+var targetScrollLockElementFive = document.querySelector('#delete-quiz-modal-container');
 
 if (document.getElementById('delete-user-btn')) {
   document.getElementById('delete-user-btn').addEventListener('click', function () {
@@ -1897,6 +1898,18 @@ if (document.getElementById('delete-quiz-topic-btn')) {
 if (document.getElementById('delete-quiz-topic-btn-cancel')) {
   document.getElementById('delete-quiz-topic-btn-cancel').addEventListener('click', function () {
     enableBodyScroll(targetScrollLockElementFour);
+  });
+}
+
+if (document.getElementById('delete-quiz-btn')) {
+  document.getElementById('delete-quiz-btn').addEventListener('click', function () {
+    disableBodyScroll(targetScrollLockElementFive);
+  });
+}
+
+if (document.getElementById('delete-quiz-btn-cancel')) {
+  document.getElementById('delete-quiz-btn-cancel').addEventListener('click', function () {
+    enableBodyScroll(targetScrollLockElementFive);
   });
 }
 
